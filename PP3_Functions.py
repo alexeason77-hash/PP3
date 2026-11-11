@@ -35,3 +35,13 @@ def data_clean(data_file):
     dataset.drop_duplicates(inplace=True)
     dataset.fillna(dataset.mean(numeric_only=True), inplace = True)
     return(dataset)
+
+
+
+
+#gets rid of febuary 29 in data that has it 
+def leap_del(dataset):
+    adj_2024 = dataset.copy()
+    for i in range(1440, 1416, -1):
+        adj_2024 = np.delete(adj_2024, i, axis=0)
+    return(adj_2024)
