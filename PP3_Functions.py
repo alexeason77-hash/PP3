@@ -40,8 +40,13 @@ def data_clean(data_file):
 
 
 #gets rid of febuary 29 in data that has it 
-def leap_del(dataset):
-    adj_2024 = dataset.copy()
-    for i in range(1440, 1416, -1):
-        adj_2024 = np.delete(adj_2024, i, axis=0)
-    return(adj_2024)
+
+
+def leap_del(data_set):
+    leap_del_2024 = data_set.copy()
+    for t in range(0, 24):
+        dt = f"2024-02-29 {t}:00"
+        if dt in leap_del_2024['DT_MST'].values:
+            row_num = leap_del_2024['DT_MST'].tolist().index(dt)
+            leap_del_2024 = leap_del_2024.drop(leap_del_2024.index[row_num])
+    return(leap_del_2024)
