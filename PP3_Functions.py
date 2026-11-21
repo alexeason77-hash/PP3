@@ -140,10 +140,6 @@ def time_split(dataset, hours, data_year):
     return(restricted_data, start, end_date)
 
 
-#part 5
-    
-    def graph_data(power, dt):
-        if hours == True:
-            pass
+
             
         
